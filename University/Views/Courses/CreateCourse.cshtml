@@ -1,0 +1,12 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Create Course</h1>
+<form class="courseForm" action="/courses/create" method="post">
+  <label for="courseName">Name: </label>
+  <input id="courseName" type="text" name="courseName">
+  <label for="courseNumber">Number: </label>
+  <input id="courseNumber" type="text" name="courseNumber">
+  <button type="submit" class="btn-primary">Create Course</button>
+</form>

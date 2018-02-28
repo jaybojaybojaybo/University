@@ -1,0 +1,42 @@
+@{
+  Layout = "_Layout";
+}
+
+@if (@Model.Count == 0)
+{
+  <h3>No Students</h3>
+  <h3><a href="/students/create">Register a Student!</a></h3>
+  <h3><a href="/courses/create">Create a Course!</a></h3>
+}
+
+@if (@Model.Count > 0)
+{
+  <div class="w3-container">
+    @foreach (var student in @Model["allStudents"])
+    {
+      <div class="w3-row">
+        <div class="w3-half w3-container" align="right">
+          <h2>Student Name</h2>
+            <li>@student.GetName()</li>
+        </div>
+        <div class="w3-half w3-container" align="left">
+          <h2>Enrollment Date</h2>
+            <li>@student.GetId()</li>
+        </div>
+        <div class="w3-half w3-container" align="left">
+          <h2>Course</h2>
+          {
+            @foreach(var course in @Model["allCourses"])
+            {
+              course.GetCourse()
+            }
+          }
+        </div>
+      </div>
+    }
+  </div>
+  <h3><a href="/students/create">Register a Student!</a></h3>
+  <h3><a href="/courses/create">Create a Course!</a></h3>
+  <h3><a href="/students/delete">Expell all Students!</a></h3>
+  <h3><a href="/courses/delete">Cancel all Courses!</a></h3>
+}
