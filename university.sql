@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 27, 2018 at 05:53 PM
+-- Generation Time: Feb 28, 2018 at 02:09 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.15
 
@@ -25,41 +25,90 @@ USE `university`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `course`
+-- Table structure for table `courses`
 --
 
-CREATE TABLE `course` (
+CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `number` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `name`, `number`) VALUES
+(1, 'History', 'HIST100'),
+(2, 'Art', 'ART100'),
+(3, 'English', 'ENGL100');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student`
+-- Table structure for table `courses_students`
 --
 
-CREATE TABLE `student` (
+CREATE TABLE `courses_students` (
+  `id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `courses_students`
+--
+
+INSERT INTO `courses_students` (`id`, `course_id`, `student_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 3),
+(4, 3, 3),
+(5, 3, 1),
+(6, 2, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `enrollDate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `enrollDate`) VALUES
+(1, 'Leo', '2018-02-01'),
+(2, 'Mike', '2018-02-02'),
+(3, 'Don', '2018-02-03'),
+(4, 'Raph', '2018-02-04');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `course`
+-- Indexes for table `courses`
 --
-ALTER TABLE `course`
+ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `student`
+-- Indexes for table `courses_students`
 --
-ALTER TABLE `student`
+ALTER TABLE `courses_students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -67,15 +116,20 @@ ALTER TABLE `student`
 --
 
 --
--- AUTO_INCREMENT for table `course`
+-- AUTO_INCREMENT for table `courses`
 --
-ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `student`
+-- AUTO_INCREMENT for table `courses_students`
 --
-ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `courses_students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
